@@ -17,9 +17,10 @@ router.post("/", authValidator, async (req, res) => {
         if (!validPWD)
             return res.status(400).send("Invalid email or password..");
 
-        if (!config.get("jwtsec"))
-            return res.status(500).send("Request can't be fullfilled..");
-        const token = jwt.sign({ userid: user._id }, config.get("jwtsec"));
+        // if (!config.get("jwtsec"))
+        //     return res.status(500).send("Request can't be fullfilled..");
+        //config.get("jwtsec")
+        const token = jwt.sign({ userid: user._id }, "thisissecret");
 
 
         res.status(200).send(token);
