@@ -3,8 +3,8 @@ const config = require("config");
 const { User } = require("../models/UserModel");
 
 module.exports = (req, res, nxt) => {
-
-    jwt.verify(req.body.token, config.get("jwtsec"), async (err, data) => {
+    //config.get("jwtsec")
+    jwt.verify(req.body.token, "thisissecret", async (err, data) => {
         if (err) {
             console.log(err.message)
             return res.status(403).send("Invalid token..");
