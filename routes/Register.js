@@ -25,9 +25,10 @@ router.post("/", registerValidator, async (req, res) => {
 
         await user.save()
 
-        if (!config.get("jwtsec"))
-            return res.status(500).send("Request can't be fullfilled..");
-        const token = jwt.sign({ userid: user._id }, config.get("jwtsec"));
+        // if (!config.get("jwtsec"))
+        //     return res.status(500).send("Request can't be fullfilled..");
+        //config.get("jwtsec")
+        const token = jwt.sign({ userid: user._id }, "thisissecret");
 
 
         res.status(200).send(token);
